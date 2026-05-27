@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('yourname-dockerhub-creds')
-        DOCKER_IMAGE = "yourdockerhubusername/facts-app"
+        DOCKERHUB_CREDENTIALS = credentials('mufaddal-dockerhub-creds')
+        DOCKER_IMAGE = "987769/facts-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
-        NAMESPACE = "yourname-ns"
+        NAMESPACE = "facts-ns"
     }
     stages {
         stage('Clone Repository') {
