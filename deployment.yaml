@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: facts-container
-          image: YOUR_DOCKER_USERNAME/facts-app:latest
+          image: IMAGE_PLACEHOLDER
           ports:
             - containerPort: 80
 
