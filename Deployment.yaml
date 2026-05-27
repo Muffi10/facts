@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: facts-ns
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facts-app
+  namespace: facts-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: facts-app
+  template:
+    metadata:
+      labels:
+        app: facts-app
+    spec:
+      containers:
+        - name: facts-container
+          image: YOUR_DOCKER_USERNAME/facts-app:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: facts-service
+  namespace: facts-ns
+spec:
+  selector:
+    app: facts-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
